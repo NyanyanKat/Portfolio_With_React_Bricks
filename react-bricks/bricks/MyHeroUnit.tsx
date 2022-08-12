@@ -1,15 +1,15 @@
-import React, { Children } from 'react'
-import { Text, RichText, Image, types } from 'react-bricks/frontend'
+import React, { Children } from "react";
+import { Text, RichText, Image, types } from "react-bricks/frontend";
 
 //=============================
 // Local Types
 //=============================
-type Padding = 'big' | 'small'
+type Padding = "big" | "small";
 
 interface HeroUnitProps {
-  padding: Padding
-  title: string
-  text: string
+  padding: Padding;
+  title: string;
+  text: string;
 }
 
 //=============================
@@ -17,7 +17,10 @@ interface HeroUnitProps {
 //=============================
 const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
   return (
-    <div className={`max-w-xl mx-auto px-6 ${padding === 'big' ? 'py-20' : 'py-12'}`}>
+    <div
+      className={`max-w-xl mx-auto px-6 ${
+        padding === "big" ? "py-20" : "py-12"
+      }`}>
       <div>
         <Image
           propName="icon"
@@ -48,7 +51,7 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
             types.RichTextFeatures.Italic,
             types.RichTextFeatures.Highlight,
             types.RichTextFeatures.Code,
-            types.RichTextFeatures.Link,
+            types.RichTextFeatures.Link
           ]}
           renderCode={(props) => (
             <code className="text-sm py-1 px-2 bg-gray-200 dark:bg-gray-700 rounded">
@@ -58,34 +61,35 @@ const MyHeroUnit: types.Brick<HeroUnitProps> = ({ padding }) => {
         />
       </div>
     </div>
-  )
-}
+  );
+};
 
 //=============================
 // Brick Schema
 //=============================
 MyHeroUnit.schema = {
-  name: 'my-hero-unit',
-  label: 'Custom Hero Unit',
+  name: "my-hero-unit",
+  label: "Custom Hero Unit",
   getDefaultProps: () => ({
-    padding: 'big',
-    title: 'This is a custom Hero Unit',
-    text: "We are a hi-tech web development company committed to deliver great products on time. We love to understand our customers' needs and exceed expectations.",
+    padding: "big",
+    title: "This is a custom Hero Unit",
+    text:
+      "We are a hi-tech web development company committed to deliver great products on time. We love to understand our customers' needs and exceed expectations."
   }),
   sideEditProps: [
     {
-      name: 'padding',
-      label: 'Padding',
+      name: "padding",
+      label: "Padding",
       type: types.SideEditPropType.Select,
       selectOptions: {
         display: types.OptionsDisplay.Select,
         options: [
-          { value: 'big', label: 'Big Padding' },
-          { value: 'small', label: 'Small Padding' },
-        ],
-      },
-    },
-  ],
-}
+          { value: "big", label: "Big Padding" },
+          { value: "small", label: "Small Padding" }
+        ]
+      }
+    }
+  ]
+};
 
-export default MyHeroUnit
+export default MyHeroUnit;
